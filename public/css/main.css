@@ -1,0 +1,47 @@
+*{
+    --fresh:#4ABDAC;
+    --verm:#FC4A1A; 
+    --sunsh:#f7b733;
+    --clean:#dfdce3;
+    background: var(--fresh);
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 5% 5% 5% 5%;
+}
+#cont{
+    background: var(--clean);
+    border-radius: 0 0 2em 0;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    display: inline-block;
+    margin-left: -0.5%;
+    min-height: 74%;
+    vertical-align: top;
+    width: 69%;
+}
+#gen{
+    min-height: auto;
+    width: 100%;
+}
+#main{
+    background: var(--clean);
+    border-radius: 2em;
+    min-height: 100%;
+    width: 100%;
+}
+#menu{
+    background:var(--sunsh);
+    border-radius: 0em 0em 0em 2em;
+    display: inline-block;
+    min-height:75%;
+    vertical-align: top;
+    width: 30%;
+}
+#top{
+    background:var(--sunsh);
+    border-radius: 2em 2em 0em 0em;
+    min-height:25%;
+    width: 100%;
+}
