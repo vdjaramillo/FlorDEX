@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'Main@index');
+Route::get('/iniciar-sesion', 'LoginController@login');

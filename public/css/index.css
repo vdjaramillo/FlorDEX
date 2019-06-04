@@ -1,0 +1,36 @@
+@import "nd.css";
+body{
+text-align:center;
+}
+body h1{
+    display: initial;
+    float: left;
+    margin-top:10%;
+    width: 100%;
+}
+body img{
+    max-width: 500px;
+    width: 75%;
+}
+#main{
+    display: block;
+    align-content: center;
+}
+body #main div{
+    width: 40%;
+}
+nav{
+    border: 0.02em solid;
+    float: right;
+    margin-top: 1em;
+    margin-right: 2em;
+    padding-top: 1%;
+    text-align: center;
+    width: 45%;
+}
+nav ul li{
+    display: inline-block;
+    font-size: 0.7em;
+    margin: 0 0.1em 0 0.5em;
+    vertical-align:top;
+}
