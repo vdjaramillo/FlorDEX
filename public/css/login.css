@@ -1,0 +1,27 @@
+@import "nd.css";
+body{
+    display: flex;
+    justify-content: center;
+    padding: 10% 0 0 0; 
+    width: 100%;
+}
+#forgt{
+    font-size: 0.7em;
+}
+#lmain{
+    background: var(--clean);
+    border-radius: 1.5em;
+    height: 400px;
+    text-align: center;
+    align-content: center;
+    width: 400px;
+    -webkit-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
+    -moz-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
+    box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
+}
+#lmain iframe{
+    height: 100%;
+}
+iframe::-webkit-scrollbar{
+    display: none;
+}
