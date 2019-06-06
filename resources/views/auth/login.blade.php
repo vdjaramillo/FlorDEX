@@ -14,17 +14,17 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div>
-                                <label for="email" >{{ __('E-Mail Address') }}</label>
+                                <label for="cedula" >Cédula</label>
                                 <div>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                        @error('email')
+                                    <input id="cedula" type="number" class="form-control @error('cedula') is-invalid @enderror" name="cedula" value="{{ old('cedula') }}" required autofocus>
+                                        @error('cedula')
+                                            <br>
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
-                                <br>
                                 <div>
                                     <label for="password">{{ __('Password') }}</label>
                                     <div >

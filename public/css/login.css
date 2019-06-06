@@ -8,6 +8,12 @@ body{
 #forgt{
     font-size: 0.7em;
 }
+.invalid-feedback{
+    color: var(--verm);
+}
+.invalid-feedback strong{
+    font-size: 0.7em;
+}
 #lmain{
     background: var(--clean);
     border-radius: 1.5em;

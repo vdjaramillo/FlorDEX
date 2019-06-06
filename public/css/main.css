@@ -16,6 +16,9 @@
     min-height: auto;
     width: 100%;
 }
+#logout{
+    margin: 1em 1em 0 0;
+}
 #menu{
     background:var(--sunsh);
     border-radius: 0em 0em 0em 2em;

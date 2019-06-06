@@ -7,7 +7,7 @@
     <body>
         <section id="main">
             <nav><ul>
-            <li><a href="/iniciar-sesion">Iniciar Sesión</a></li>
+            <li><a href="/login">Iniciar Sesión</a></li>
                 <li>¿Quiénes somos?</li>
                 <li>Contacto</li>    
             </ul></nav>
