@@ -13,7 +13,7 @@
                 <th scope="row">{{$item->name}}</th>
                 <td>{{$item->cedula}}</td>
                 <td onclick="Editar({{$item->cedula}})"><img src="{{ asset('img/edit.png') }}" width="25rem" alt="Editar"></td>
-                <td onclick="Eliminar({{$item->cedula}})"><img src="{{ asset('img/eliminar.png') }}" width="25rem" alt="Eliminar"></td>
+                <td onclick='Eliminar({{$item->cedula}},"{{$item->name}}")'><img src="{{ asset('img/eliminar.png') }}" width="25rem" alt="Eliminar"></td>
             </tr>
             @endforeach
         </tbody>
@@ -22,9 +22,12 @@
             function Editar(id) {
                 location.href="/editar-usuario/"+id;
             }
-            function Eliminar(id){
-                alert("Eliminando "+id);
-                location.href="/eliminar-usuario/"+id;
+            function Eliminar(id,nombre){
+                var bool=confirm("¿Seguro de eliminar el usuario "+nombre+"?");
+                if(bool){
+                    alert("Eliminando "+id);
+                    location.href="/eliminar-usuario/"+id;
+                }
             }
     </script>
 @endsection
