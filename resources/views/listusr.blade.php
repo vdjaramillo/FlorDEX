@@ -1,13 +1,4 @@
 @extends('admin')
-@section('links')
-    <nav>
-        <ul>
-            <li id="usbtn" onclick="show()" class="list-group-item bg-soft">Usuarios</li>
-            <a id="usopt" class="usopt list-group-item bg-soft" style="display:none" href="/register"><li>Registrar usuario</li></a>
-            <a id="usopt" class="usopt list-group-item bg-soft activ" style="display:none" href="# "><li >Lista de usuarios</li></a>    
-        </ul>
-        </nav>
-@endsection
 @section('contenido')
     <table class="table">
         <thead>
@@ -32,7 +23,8 @@
                 location.href="/editar-usuario/"+id;
             }
             function Eliminar(id){
-                alert("Eliminando "+id)
+                alert("Eliminando "+id);
+                location.href="/eliminar-usuario/"+id;
             }
     </script>
 @endsection

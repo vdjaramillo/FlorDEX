@@ -15,8 +15,10 @@ class ListaUsuariosController extends Controller
         return view('listusr', ['users' => Users::all()]);
 
     }
-    public function delete(){
-        
+    public function delete($cc){
+        $user = Users::findbycc($cc);
+        Users::destroy($user->id);
+        return redirect('lista-usuarios');
     }
     public function edit($cc){
         return view('editusr', ['user'=> Users::findbycc($cc)]);
