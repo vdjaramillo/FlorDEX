@@ -5,6 +5,7 @@
         <title>FlorDEX |Flores de Altagracia</title>
     </head>
     <body>
+            
         <section id="main">
             <nav><ul>
             <li><a href="/login">Iniciar Sesión</a></li>

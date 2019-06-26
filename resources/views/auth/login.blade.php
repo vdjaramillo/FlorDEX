@@ -4,7 +4,14 @@
         <link rel="stylesheet" href="css/login.css"/>
         <title>Iniciar Sesión | FlorDEX</title>
     </head>
+     
     <body>
+            <section id="background" style="position:absolute; left:0; top:0; width:100%; height:100%">
+                    <?php
+                    $r=rand(1,4); 
+                    echo '<img class="img-fluid" style="width:100%; height:99%" src="img/c'.$r.'.webp" />';
+                ?> 
+            </section>   
         <div id="lmain"> 
             <br>
             <div class="card">

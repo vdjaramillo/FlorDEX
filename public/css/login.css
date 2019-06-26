@@ -8,18 +8,14 @@ body{
 #forgt{
     font-size: 0.7em;
 }
-.invalid-feedback{
-    color: var(--verm);
-}
-.invalid-feedback strong{
-    font-size: 0.7em;
-}
 #lmain{
+    align-content: center;
     background: var(--clean);
     border-radius: 1.5em;
     height: 400px;
+    position: absolute;
     text-align: center;
-    align-content: center;
+  
     width: 400px;
     -webkit-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
     -moz-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
