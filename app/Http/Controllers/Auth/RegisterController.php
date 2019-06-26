@@ -37,7 +37,9 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        return redirect($this->redirectPath());   public function __construct()
+        return redirect($this->redirectPath());   
+    }    
+    public function __construct()
     {
             $this->middleware('role:Administrador');
     }
