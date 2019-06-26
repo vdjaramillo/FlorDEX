@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             'email' => 'administrador@unal.edu.co',
             'cedula' => 102931,
             'cargo' => 'Administrador',
-            'password' => 123,
+            'password' => Hash::make(123),
         ]);
     }
 
