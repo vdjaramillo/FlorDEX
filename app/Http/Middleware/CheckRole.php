@@ -15,8 +15,10 @@ class CheckRole
      */
     public function handle($request, Closure $next, $role)
     {
-        if (strcmp ($request->user()->cargo, $role)==0) {
+        if (!(is_null($request->user())) and strcmp ($request->user()->cargo, $role)==0) {
             return $next($request);
+        }else if(is_null($request->user())){
+            return redirect('/login');
         }else{
             return redirect('/opciones-de-usuario');    
         }
