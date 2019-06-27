@@ -1,5 +1,10 @@
 @extends('admin')
 @section('contenido')
+<form action="{{ route('lista-usuarios') }}" method="POST">
+    @csrf
+    <input name="busq" required class="col-form-label form-control" type="text" placeholder="Buscar por cédula" />
+    <input value="Buscar" type="submit" class="btn btn-secondary"/>
+</form>
     <table class="table">
         <thead>
             <th scope="col">Nombre</th>
@@ -25,7 +30,6 @@
             function Eliminar(id,nombre){
                 var bool=confirm("¿Seguro de eliminar el usuario "+nombre+"?");
                 if(bool){
-                    alert("Eliminando "+id);
                     location.href="/eliminar-usuario/"+id;
                 }
             }

@@ -1,12 +1,8 @@
 @extends('admin')
-@section('links')
-    <a class="list-group-item bg-soft activ" href="#"><li>Registrar usuario</li></a>
-    <a class="list-group-item bg-soft" href="/lista-usuarios"><li >Lista de usuarios</li></a> 
-@endsection
 @section('contenido')
-<div id="registro">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div id="registro" class="justify-content-center">
+    <div class="col-md-auto justify-content-center">
+        
             <div class="card">
                 <strong class="card-header">{{ __('Register') }}</strong>
 
@@ -104,7 +100,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
 @endsection

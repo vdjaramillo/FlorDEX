@@ -30,7 +30,7 @@
             <nav id="menu" class="col-md-4">
                 @yield('navig')
             </nav>
-            <aside id="cont" class="col-md-6">
+            <aside id="cont" class="col-md-7">
                 @yield('contenido')
             </aside>
         </section>

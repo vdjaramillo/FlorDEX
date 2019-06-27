@@ -6,7 +6,6 @@ li{
     list-style: none;
 }
 #cont{
-    background: var(--clean);
     display: inline-block;
     vertical-align: top;
 }
@@ -20,9 +19,6 @@ li{
     height: inherit;
     padding-bottom:3%;
     vertical-align: top;
-}
-#registro{
-    text-align:center;
 }
 #top{
     background:var(--sunsh);

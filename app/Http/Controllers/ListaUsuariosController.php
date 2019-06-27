@@ -17,13 +17,45 @@ class ListaUsuariosController extends Controller
     }
     public function delete($cc){
         $user = Users::findbycc($cc);
+        if(strcmp($user->cargo,"Administrador")==0){
+            $users = Users::getbycargo($user->cargo);
+            if(count($users)==1){
+                return '<script>
+                                alert("Debe existir al menos un Administrador en el sitio");
+                                location.href="/lista-usuarios";
+                        </script>';
+            }
+        }
         Users::destroy($user->id);
-        return redirect('lista-usuarios');
+        return redirect('lista-usuarios');    
+        
     }
     public function edit($cc){
         return view('editusr', ['user'=> Users::findbycc($cc)]);
     }
-   
+   public function search(){
+    if(empty($_POST['busq'])){
+        return '<script>
+        alert("El campo cédula no puede estar vacío");
+        location.href="/lista-usuarios";
+        </script>';
+    }
+    $user = Users::findbycc($_POST['busq']);
+    if(is_null($user)){
+         return '
+        <script>
+        var bool=confirm("La cédula ingresada no se encuentra registrada. \n ¿desea registrar un nuevo usuario? ");
+                if(bool){
+                    location.href="/register";
+                }else{
+                    location.href="/lista-usuarios";
+                }
+        </script>
+        ';
+    }else{
+        return view('listusr', ['users' => [$user]]);
+    }
+   }
     public function update(){
         $data=[
             'name'=>$_POST['name'],
