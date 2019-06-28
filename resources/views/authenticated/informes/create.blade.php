@@ -25,10 +25,10 @@
                             @foreach($datos_dex as $dato)
                                 <div class="form-group{{ $errors->has($dato->nombre) ? ' has-error' : '' }}">
                                     <label for="redirect" class=" control-label" style="text-align: left">{{$dato->nombre}}</label>
-                                    <div>
+                                    <div class="col-md-6">
                                         <input type="checkbox" style="float: right"
                                                class="form-control" id="{{$dato->nombre}}" name="{{$dato->nombre}}"
-                                               placeholder="{{$dato->nombre}}">
+                                               placeholder="{{$dato->nombre}}"/>
                                     </div>
                                 </div>
                                 <br>
