@@ -12,6 +12,7 @@
         <a id="usopt" class="usopt list-group-item bg-soft" style="display:none" href="{{route('tipos_informes_lista')}}"><li >Lista de usuarios</li></a>
         <li id="usbtn" onclick="showInforme()" class="list-group-item bg-soft">Informes</li>
         <a id="usopt" class="usoptin list-group-item bg-soft" style="display:none" href="{{route('tipo_informe_create')}}"><li >Crear Tipo de Informe</li></a>
+        <a id="usopt" class="usoptin list-group-item bg-soft" style="display:none" href="{{route('tipos_informes_lista')}}"><li >Lista de Informes</li></a>
     </ul>
     </nav>
     <script>

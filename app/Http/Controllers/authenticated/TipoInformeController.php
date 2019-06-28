@@ -17,7 +17,8 @@ class TipoInformeController extends Controller
      */
     public function index()
     {
-        //
+        $tipos_informe = Tipo_informe::all();
+        return view('authenticated.informes.index',compact('tipos_informe'));
     }
 
     /**
@@ -68,7 +69,7 @@ class TipoInformeController extends Controller
             }
             //Se debe enviar error
             //$this->setAlert('success', 'Se ha guardado la información correctamente');
-            return redirect(action('authenticated\TipoInformeController@create'));
+            return redirect(action('authenticated\TipoInformeController@index'));
         } else {
             $this->setAlert('danger', 'Error al guardar la información. Por favor intenta nuevamente.');
         }
