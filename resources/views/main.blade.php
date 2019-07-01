@@ -9,8 +9,9 @@
     <section id="background" style="position:absolute; left:0; top:0; width:100%; height:100%">
             <?php
                 $r=rand(1,4); 
-                echo '<img class="img-fluid" style="width:100%; height:99%" src="img/c'.$r.'.webp" />';
-            ?> 
+                $ruta = asset('img/c'.$r);
+                echo '<img class="img-fluid" style="width:100%; height:99%" src="'.$ruta.'.webp" />';
+            ?>
     </section> 
     <section id="main" class="col-md-12">
         <div id="top"  class="col-md">

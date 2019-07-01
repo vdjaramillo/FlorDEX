@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('authenticated.usuarios.admin')
 @section('contenido')
 <form action="{{ route('lista-usuarios') }}" method="POST">
     @csrf

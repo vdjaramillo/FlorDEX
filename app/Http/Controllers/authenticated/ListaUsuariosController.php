@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\authenticated;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Controllers\Controller;
 use App\Models\Users;
 
 class ListaUsuariosController extends Controller
 {
     public function index(){
 
-        return view('listusr', ['users' => Users::all()]);
+        return view('authenticated.usuarios.list', ['users' => Users::all()]);
 
     }
     public function delete($cc){
@@ -22,7 +22,7 @@ class ListaUsuariosController extends Controller
             if(count($users)==1){
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
-                                location.href="/lista-usuarios";
+                                location.href="usuario/lista";
                         </script>';
             }
         }
@@ -31,13 +31,13 @@ class ListaUsuariosController extends Controller
         
     }
     public function edit($cc){
-        return view('editusr', ['user'=> Users::findbycc($cc)]);
+        return view('authenticated.usuarios.edit', ['user'=> Users::findbycc($cc)]);
     }
    public function search(){
     if(empty($_POST['busq'])){
         return '<script>
         alert("El campo cédula no puede estar vacío");
-        location.href="/lista-usuarios";
+        location.href="usuario/lista";
         </script>';
     }
     $user = Users::findbycc($_POST['busq']);
@@ -48,12 +48,12 @@ class ListaUsuariosController extends Controller
                 if(bool){
                     location.href="/register";
                 }else{
-                    location.href="/lista-usuarios";
+                    location.href="usuario/lista";
                 }
         </script>
         ';
     }else{
-        return view('listusr', ['users' => [$user]]);
+        return view('authenticated.usuarios.list', ['users' => [$user]]);
     }
    }
     public function update(){
@@ -76,7 +76,7 @@ class ListaUsuariosController extends Controller
             if(count($users)==1){
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
-                                location.href="../lista-usuarios/";
+                                location.href="../usuario/lista";
                         </script>';
             }
         }
@@ -101,6 +101,6 @@ class ListaUsuariosController extends Controller
             $data['password']=Hash::make($_POST['password']);
         }
         $user->update($data);
-        return redirect('lista-usuarios');
+        return redirect('usuario/lista');
     }
 }

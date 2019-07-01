@@ -13,7 +13,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/opciones-de-usuario';
+    protected $redirectTo = 'usuario/opciones';
 
     /**
      * Create a new controller instance.

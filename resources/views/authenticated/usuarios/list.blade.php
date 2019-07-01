@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('authenticated.usuarios.admin')
 @section('contenido')
 <form action="{{ route('lista-usuarios') }}" method="POST">
     @csrf
@@ -25,12 +25,12 @@
     </table>
     <script>
             function Editar(id) {
-                location.href="/editar-usuario/"+id;
+                location.href="./editar/"+id;
             }
             function Eliminar(id,nombre){
                 var bool=confirm("¿Seguro de eliminar el usuario "+nombre+"?");
                 if(bool){
-                    location.href="/eliminar-usuario/"+id;
+                    location.href="./eliminar/"+id;
                 }
             }
     </script>
