@@ -27,7 +27,7 @@ class ListaUsuariosController extends Controller
             }
         }
         Users::destroy($user->id);
-        return redirect('lista-usuarios');    
+        return redirect('usuario/lista');    
         
     }
     public function edit($cc){
