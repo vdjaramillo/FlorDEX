@@ -20,7 +20,7 @@ class CheckRole
         }else if(is_null($request->user())){
             return redirect('/login');
         }else{
-            return redirect('/opciones-de-usuario');    
+            return redirect('usuario/opciones');    
         }
     }
 }
