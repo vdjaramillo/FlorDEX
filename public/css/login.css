@@ -12,10 +12,9 @@ body{
     align-content: center;
     background: var(--clean);
     border-radius: 1.5em;
-    height: 400px;
-    position: absolute;
+    /*position: absolute;*/
     text-align: center;
-  
+
     width: 400px;
     -webkit-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
     -moz-box-shadow: 8px 8px 5px 11px rgba(0,0,0,0.5);
