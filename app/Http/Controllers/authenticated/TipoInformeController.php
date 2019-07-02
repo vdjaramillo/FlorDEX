@@ -50,7 +50,7 @@ class TipoInformeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if(count((array)$input) == 1){
+        if(count((array)$input) == 2){
             //Se debe enviar un mensaje que debe seleccionar al menos un un dato
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -65,6 +65,7 @@ class TipoInformeController extends Controller
                 $nombre = $dato->nombre;
                 if(isset($input->$nombre)){
                     $tipo_informe->datos_dex()->attach($dato->id);
+                    dd('funciono');
                 }
             }
             //Se debe enviar error

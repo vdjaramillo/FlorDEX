@@ -21,18 +21,43 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group">
-                            @foreach($datos_dex as $dato)
-                                <div class="form-group{{ $errors->has($dato->nombre) ? ' has-error' : '' }}">
-                                    <label for="redirect" class=" control-label" style="text-align: left">{{$dato->nombre}}</label>
-                                    <div class="col-md-6">
-                                        <input type="checkbox" style="float: right"
-                                               class="form-control" id="{{$dato->nombre}}" name="{{$dato->nombre}}"
-                                               placeholder="{{$dato->nombre}}"/>
-                                    </div>
-                                </div>
-                                <br>
-                            @endforeach
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Atributos</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($datos_dex as $dato)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="{{$dato->id}}">
+                                                    <label class="custom-control-label" for="{{$dato->id}}">
+                                                        {{$dato->nombre}}
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+
+{{--                        <div class="custom-control custom-checkbox">--}}
+{{--                            @foreach($datos_dex as $dato)--}}
+{{--                                <div class="form-group{{ $errors->has($dato->nombre) ? ' has-error' : '' }}">--}}
+{{--                                    <label for="redirect" class=" control-label" style="text-align: left">{{$dato->nombre}}</label>--}}
+{{--                                    <table class="table-responsive">--}}
+{{--                                        <input type="checkbox" style="float: right"--}}
+{{--                                               class="custom-control-input" id="{{$dato->nombre}}">--}}
+{{--                                        <label class="custom-control-label" for="{{$dato->id}}">--}}
+{{--                                            {{$dato->nombre}}--}}
+{{--                                        </label>--}}
+{{--                                    </table>--}}
+{{--                                </div>--}}
+{{--                                <br>--}}
+{{--                            @endforeach--}}
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
