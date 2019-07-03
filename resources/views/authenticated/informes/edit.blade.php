@@ -1,12 +1,13 @@
 @extends('authenticated.usuarios.admin')
 @section('contenido')
+    @includeIf('repository.alerts')
     <div id="editar" class="justify-content-center">
         <div class="col-md-auto justify-content-center">
 
             <div class="card">
-                <strong class="card-header">Esta editando el informe {{$tipo_informe->nombre}}}</strong>
+                <strong class="card-header">Esta editando el informe {{$tipo_informe->nombre}}</strong>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('tipo_informe_update') }}">
+                    <form method="POST" action="{{ route('tipo_informe_update',['$id'=> $tipo_informe->id]) }}">
                         @csrf
                         <div class="form-group">
                             <label for="name" class="col-md-5 col-form-label text-md-right">Nombre de informe</label>
