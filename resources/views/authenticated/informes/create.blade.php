@@ -32,7 +32,7 @@
                                         <tr>
                                             <td>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="{{$dato->id}}">
+                                                    <input type="checkbox" class="custom-control-input" id="{{$dato->id}}" name="{{$dato->nombre}}">
                                                     <label class="custom-control-label" for="{{$dato->id}}">
                                                         {{$dato->nombre}}
                                                     </label>

@@ -22,7 +22,7 @@ class CreateDatosDexTable extends Migration
         });
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Declaracion de cambio',
+            'nombre' => 'Declaracion_de_cambio',
             'tipo' => 'number',
         ]);
 
