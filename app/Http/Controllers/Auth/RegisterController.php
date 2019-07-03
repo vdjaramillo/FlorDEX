@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'cedula' => ['required', 'integer', 'integer', 'min:10000000', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'cargo' => ['required', 'string','in:Administrador,Tesorero,Contador,Encargado Logistica'],
+            'cargo' => ['required', 'string','in:Administrador,Tesorero,Contador,Encargado Logistica'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
