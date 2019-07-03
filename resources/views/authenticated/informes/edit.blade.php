@@ -33,8 +33,8 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="{{$dato->nombre}}" name="{{$dato->nombre}}" {{old($dato->nombre) ? 'checked' : ($tipo_informe->datos_dex()->wherePivot('dato_dex_id',$dato->id)->first() ? 'checked' : '' )}}>
-                                            <label class="custom-control-label" for="{{$dato->id}}">
+                                            <input type="checkbox" class="custom-control-input" id="{{$dato->id}}" name="{{$dato->nombre}}" {{old($dato->nombre) ? 'checked' : ($tipo_informe->datos_dex()->wherePivot('dato_dex_id',$dato->id)->first() ? 'checked' : '' )}} >
+                                            <label class="custom-control-label" for="{{$dato->id}}" >
                                                 {{$dato->nombre}}
                                             </label>
                                         </div>
