@@ -17,7 +17,7 @@
             <tr>
                 <td>{{$informe->nombre}}</td>
                 <td>
-                    <span class="oi oi-pencil"></span>
+                    <span href="{{route('tipo_informes_edit',['$id' => $informe->id])}}" class="oi oi-pencil"></span>
                     <span class="oi oi-trash"></span>
                 </td>
 

@@ -97,7 +97,9 @@ class TipoInformeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipo_informe = Tipo_informe::find($id);
+
+        return view('authenticated.informes.edit',$tipo_informe);
     }
 
     /**
@@ -120,6 +122,6 @@ class TipoInformeController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
