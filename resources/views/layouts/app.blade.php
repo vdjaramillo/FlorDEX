@@ -22,6 +22,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" />
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/main/freelancer.min.css?version='.env('APP_VERSION', '0.0.0.0')) }}" rel="stylesheet">

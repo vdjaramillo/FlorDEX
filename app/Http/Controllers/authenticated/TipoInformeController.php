@@ -65,7 +65,6 @@ class TipoInformeController extends Controller
                 $nombre = $dato->nombre;
                 if(isset($input->$nombre)){
                     $tipo_informe->datos_dex()->attach($dato->id);
-                    dd('funciono');
                 }
             }
             //Se debe enviar error

@@ -5,16 +5,24 @@
     <input name="busq" required class="col-form-label form-control" type="text" placeholder="Buscar por cédula" />
     <input value="Buscar" type="submit" class="btn btn-secondary"/>
 </form>
-    <table class="table">
+<div class="card">
+    <table class="table-hover">
         <thead>
             <th scope="col">Nombre</th>
+            <th scope="col"></th>
         </thead>
         <tbody>
             @foreach ($tipos_informe as $informe)
             <tr>
-                <th scope="row">{{$informe->nombre}}</th>
+                <td>{{$informe->nombre}}</td>
+                <td>
+                    <span class="oi oi-pencil"></span>
+                    <span class="oi oi-trash"></span>
+                </td>
+
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
 @endsection

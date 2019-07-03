@@ -3,6 +3,8 @@
 <title>FlorDEX</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" />
+
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>

@@ -2,7 +2,7 @@
 @section('contenido')
 <div id="registro" class="justify-content-center">
     <div class="col-md-auto justify-content-center">
-        
+
             <div class="card">
                 <strong class="card-header">Crear Tipo de Informe</strong>
                 <div class="card-body">
