@@ -16,7 +16,7 @@ class CreateTiposInformeTable extends Migration
         Schema::create('tipos_informe', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }

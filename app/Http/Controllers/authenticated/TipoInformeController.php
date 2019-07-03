@@ -42,7 +42,7 @@ class TipoInformeController extends Controller
     {
         $input = (object) $request->input();
         $array_files_validacion = [
-            'nombre' => ['required']
+            'nombre' => ['required', 'unique:tipos_informe']
         ];
         $validator = Validator::make($request->all(), $array_files_validacion);
 
