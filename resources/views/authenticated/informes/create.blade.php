@@ -1,5 +1,6 @@
 @extends('authenticated.usuarios.admin')
 @section('contenido')
+@includeIf('repository.alerts')
 <div id="registro" class="justify-content-center">
     <div class="col-md-auto justify-content-center">
 

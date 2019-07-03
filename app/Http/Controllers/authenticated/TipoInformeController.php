@@ -52,6 +52,7 @@ class TipoInformeController extends Controller
 
         if(count((array)$input) == 2){
             //Se debe enviar un mensaje que debe seleccionar al menos un un dato
+            $this->setAlert('danger', 'Debes seleccionar al menos un dato');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -67,8 +68,8 @@ class TipoInformeController extends Controller
                     $tipo_informe->datos_dex()->attach($dato->id);
                 }
             }
-            //Se debe enviar error
-            //$this->setAlert('success', 'Se ha guardado la información correctamente');
+
+            $this->setAlert('success', 'Se ha guardado la información correctamente');
             return redirect(action('authenticated\TipoInformeController@index'));
         } else {
             $this->setAlert('danger', 'Error al guardar la información. Por favor intenta nuevamente.');

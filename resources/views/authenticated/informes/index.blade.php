@@ -1,5 +1,6 @@
 @extends('authenticated.usuarios.admin')
 @section('contenido')
+@includeIf('repository.alerts')
 <form action="{{ route('lista-usuarios') }}" method="POST">
     @csrf
     <input name="busq" required class="col-form-label form-control" type="text" placeholder="Buscar por cédula" />
