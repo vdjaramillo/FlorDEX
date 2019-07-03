@@ -16,11 +16,11 @@
     </ul>
     </nav>
     <script>
-    function show($class){
-        if($($class).css('display') == 'none'){
-            $($class).css({"display":"block"});
+    function show(clase){
+        if($('.'+clase).css('display') == 'none'){
+            $('.'+clase).css({"display":"block"});
         }else{
-            $($class).css({"display":"none"});
+            $('.'+clase).css({"display":"none"});
         }
     }
       </script>

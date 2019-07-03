@@ -6,7 +6,7 @@
             <div id="lmain">
                 <br>
                 <div class="card">
-                    <div class="card-header"><h1>{{ __('Login') }}</h1></div>
+                    <div class="card-header"><h1>Inicio de Sesión</h1></div>
                     <br>
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
