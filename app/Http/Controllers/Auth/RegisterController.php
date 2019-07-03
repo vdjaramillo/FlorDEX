@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -59,7 +60,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -68,12 +68,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        User::create([
             'name' => $data['name'],
             'cedula' => $data['cedula'],
             'email' => $data['email'],
             'cargo' => $data['cargo'],
             'password' => Hash::make($data['password']),
         ]);
+        return Mail::send('emails.register',['data'=>$data], function ($message) use ($data){
+            $message->from('FlorDex@floresdealtagracia.com', 'FlorDEX');
+            $message->subject('Bienvenido a FlorDEX')
+            $message->to($data['email'],$data['name']);
+        });
     }
 }
