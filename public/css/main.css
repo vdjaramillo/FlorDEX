@@ -66,3 +66,9 @@ li{
     vertical-align: top;
     margin-bottom:0;
 }
+.imgbtn{
+    transition: all 1s ease 0s;
+}
+.imgbtn:hover{
+    filter: hue-rotate(0deg) brightness(0%) saturate(0);
+}
