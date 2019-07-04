@@ -76,7 +76,7 @@ class ListaUsuariosController extends Controller
             if(count($users)==1){
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
-                                location.href="../usuario/lista";
+                                location.href="usuario/lista";
                         </script>';
             }
         }
