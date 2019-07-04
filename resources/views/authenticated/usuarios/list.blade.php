@@ -17,8 +17,8 @@
             <tr>
                 <th scope="row">{{$item->name}}</th>
                 <td>{{$item->cedula}}</td>
-                <td onclick="Editar({{$item->cedula}})"><img src="{{ asset('img/edit.png') }}" width="25rem" alt="Editar"></td>
-                <td onclick='Eliminar({{$item->cedula}},"{{$item->name}}")'><img src="{{ asset('img/eliminar.png') }}" width="25rem" alt="Eliminar"></td>
+                <td style="text-align:center" onclick="Editar({{$item->cedula}})"><img src="{{ asset('img/edit.png') }}" width="25rem" alt="Editar"></td>
+                <td style="text-align:center" onclick='Eliminar({{$item->cedula}},"{{$item->name}}")'><img src="{{ asset('img/eliminar.png') }}" width="25rem" alt="Eliminar"></td>
             </tr>
             @endforeach
         </tbody>
