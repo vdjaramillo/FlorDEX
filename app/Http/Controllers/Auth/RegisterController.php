@@ -77,7 +77,7 @@ class RegisterController extends Controller
         ]);
         return Mail::send('emails.register',['data'=>$data], function ($message) use ($data){
             $message->from('FlorDex@floresdealtagracia.com', 'FlorDEX');
-            $message->subject('Bienvenido a FlorDEX')
+            $message->subject('Bienvenido a FlorDEX');
             $message->to($data['email'],$data['name']);
         });
     }
