@@ -25,7 +25,8 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = route('opciones-de-usuario');
+    //protected $redirectTo = route('opciones-de-usuario');
+    protected $redirectTo = 'usuario/opciones';
 
     /**
      * Create a new controller instance.

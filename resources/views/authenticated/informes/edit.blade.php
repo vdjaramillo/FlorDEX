@@ -13,7 +13,7 @@
                             <label for="name" class="col-md-5 col-form-label text-md-right">Nombre de informe</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
+                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') ? old('nombre') : $tipo_informe->nombre}}" required autocomplete="nombre" autofocus>
 
                                 @if ($errors->has('nombre'))
                                     <span class="invalid-feedback" role="alert">
@@ -43,14 +43,14 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
                     </form>
-                </div>
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Register') }}
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>

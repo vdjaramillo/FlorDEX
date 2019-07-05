@@ -38,6 +38,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
+        $this->setAlert('success', 'Se ha guardado la información correctamente');
         return redirect($this->redirectPath());   
     }    
     public function __construct()

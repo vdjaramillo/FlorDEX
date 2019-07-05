@@ -111,7 +111,45 @@ class TipoInformeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = (object) $request->input();
+        $tipo_informe = Tipo_informe::find($id);
+        if ($tipo_informe) {
+            $array_files_validacion = [
+                'nombre' => ['required']
+            ];
+            if ($tipo_informe->nombre != $request->nombre) {
+                array_push($array_files_validacion['nombre'], 'unique:tipos_informe');
+            }
+            $validator = Validator::make($request->all(), $array_files_validacion);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            if(count((array)$input) == 2){
+                //Se debe enviar un mensaje que debe seleccionar al menos un un dato
+                $this->setAlert('danger', 'Debes seleccionar al menos un dato');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $tipo_informe->fill($request->input());
+            if ($tipo_informe->save()) {
+                $tipo_informe->datos_dex()->detach();
+                $datos_dex = Dato_dex::all();
+                foreach ($datos_dex as $dato){
+                    $nombre = $dato->nombre;
+                    if(isset($input->$nombre)){
+                        $tipo_informe->datos_dex()->attach($dato->id);
+                    }
+                }
+                $this->setAlert('success', 'Se ha actualizado la información correctamente');
+
+                return redirect(action('authenticated\TipoInformeController@index'));
+            } else {
+                $this->setAlert('danger', 'Error al guardar la información. Por favor intenta nuevamente.');
+            }
+        }
+        $this->setAlert('danger', 'No se encuentra la información solicitada o no tienes permiso para acceder a ella');
+        return redirect()->back()->withErrors($validator)->withInput();
     }
 
     /**
