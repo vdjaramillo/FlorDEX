@@ -6,6 +6,8 @@ use App\Models\DEX\Dato_dex;
 use App\Models\Tipo_informe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TipoInformeController extends Controller
@@ -15,10 +17,23 @@ class TipoInformeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $busqueda = null;
         $tipos_informe = Tipo_informe::all();
-        return view('authenticated.informes.index',compact('tipos_informe'));
+        if (isset($request->busqueda)) {
+            $busqueda = $request->busqueda;
+            if(is_numeric($request->busqueda)){
+                $tipos_informe = Tipo_informe::where('id',$busqueda)->get();
+                if(count($tipos_informe)==0){
+                    $tipos_informe = Tipo_informe::all();
+                    $this->setAlert('danger', 'Tipo de informe no encontrado');
+                }
+            }else{
+                $this->setAlert('danger', 'Tipo de informe no encontrado');
+            }
+        }
+        return view('authenticated.informes.index',compact('tipos_informe','busqueda'));
     }
 
     /**

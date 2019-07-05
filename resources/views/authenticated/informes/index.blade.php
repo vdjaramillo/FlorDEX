@@ -1,21 +1,23 @@
 @extends('authenticated.usuarios.admin')
 @section('contenido')
 @includeIf('repository.alerts')
-<form action="{{ route('lista-usuarios') }}" method="POST">
+<form action="{{ route('tipos_informes_busqueda') }}" method="POST">
     @csrf
-    <input name="busq" required class="col-form-label form-control" type="text" placeholder="Buscar por cédula" />
+    <input name="busqueda" id="busqueda" class="col-form-label form-control" type="text" placeholder="Buscar por ID" value="{{isset($busqueda) ? $busqueda : ''}}"/>
     <input value="Buscar" type="submit" class="btn btn-secondary"/>
 </form>
 <div class="card">
     @if(count($tipos_informe)>0)
         <table class="table-hover">
             <thead>
+                <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col"></th>
             </thead>
             <tbody>
                 @foreach ($tipos_informe as $informe)
                 <tr>
+                    <td>{{$informe->id}}</td>
                     <td>{{$informe->nombre}}</td>
                     <td>
                         <a href="{{route('tipo_informes_edit',['$id' => $informe->id])}}" class="oi oi-pencil"></a>
