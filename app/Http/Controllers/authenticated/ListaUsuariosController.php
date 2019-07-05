@@ -22,7 +22,7 @@ class ListaUsuariosController extends Controller
             if(count($users)==1){
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
-                                location.href="usuario/lista";
+                                location.href="'.route('lista-usuarios').'";
                         </script>';
             }
         }
@@ -37,7 +37,7 @@ class ListaUsuariosController extends Controller
     if(empty($_POST['busq'])){
         return '<script>
         alert("El campo cédula no puede estar vacío");
-        location.href="usuario/lista";
+        location.href="'.route('lista-usuarios').'";
         </script>';
     }
     $user = Users::findbycc($_POST['busq']);
@@ -46,9 +46,9 @@ class ListaUsuariosController extends Controller
         <script>
         var bool=confirm("La cédula ingresada no se encuentra registrada. \n ¿desea registrar un nuevo usuario? ");
                 if(bool){
-                    location.href="/register";
+                    location.href="'.route('register').'";
                 }else{
-                    location.href="usuario/lista";
+                    location.href="'.route('lista-usuarios').'";
                 }
         </script>
         ';
@@ -76,7 +76,7 @@ class ListaUsuariosController extends Controller
             if(count($users)==1){
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
-                                location.href="usuario/lista";
+                                location.href="'.route('lista-usuarios').'";
                         </script>';
             }
         }
