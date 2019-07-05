@@ -149,7 +149,7 @@ class TipoInformeController extends Controller
             }
         }
         $this->setAlert('danger', 'No se encuentra la información solicitada o no tienes permiso para acceder a ella');
-        return redirect()->back()->withErrors($validator)->withInput();
+        return redirect()->back()->withInput();
     }
 
     /**
@@ -160,6 +160,18 @@ class TipoInformeController extends Controller
      */
     public function destroy($id)
     {
+        $tipo_informe = Tipo_informe::find($id);
+        if(!$tipo_informe){
+            $this->setAlert('danger', 'No se encuentra la información solicitada o no tienes permiso para acceder a ella');
+            return redirect()->back()->withInput();
+        }
 
+        if ($tipo_informe->delete()) {
+            $this->setAlert('success', 'Se ha borrado correctamente el tipo de informe');
+            return redirect(action('authenticated\TipoInformeController@index'));
+        } else {
+            $this->setAlert('error', 'Ha ocurrido un error. Por favor intenta de nuevo');
+            return redirect()->back()->withInput();
+        }
     }
 }
