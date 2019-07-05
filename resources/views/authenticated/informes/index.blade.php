@@ -19,15 +19,8 @@
                     <td>{{$informe->nombre}}</td>
                     <td>
                         <a href="{{route('tipo_informes_edit',['$id' => $informe->id])}}" class="oi oi-pencil"></a>
-                        <form id="borrar_{{$informe->id}}" style="display: none;"
-                              action="{{ route('tipo_informe_delete',['$id' => $informe->id]) }}"
-                              method="POST">
-                            {{ csrf_field() }}
-                            <input name="_method" type="hidden" value="DELETE">
-                        </form>
-                        <a title="Eliminar" onclick="borrar_{{$informe->id}}.submit()" class="oi oi-trash"></a>
+                        <a onclick='eliminar("{{$informe->id}}","{{$informe->nombre}}")' class="oi oi-trash"></a>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>
@@ -36,4 +29,13 @@
         <h3>No hay Tipos de Informe registrados en el sistema</h3>
     @endif
 </div>
+
+<script>
+    function eliminar(id,nombre){
+        var bool=confirm("¿Seguro de eliminar el informe "+nombre+"?");
+        if(bool){
+            location.href="./informes/"+id+"/eliminar";
+        }
+    }
+</script>
 @endsection
