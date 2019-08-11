@@ -22,5 +22,8 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
     Route::get('tipo/informe/{id}/editar', 'authenticated\TipoInformeController@edit')->name('tipo_informes_edit')->where('id', '[0-9]+');;
     Route::post('tipo/informe/{id}/editar', 'authenticated\TipoInformeController@update')->name('tipo_informe_update')->where('id', '[0-9]+');;
     Route::get('tipos/informes/{id}/eliminar', 'authenticated\TipoInformeController@destroy')->name('tipo_informe_delete')->where('id', '[0-9]+');;
-});
 
+    
+});
+//Ruta para creacion dex
+Route::post('/dex/crear','authenticated\DEXController@crear')->name('crear-dex')->middleware(['auth','role:Encargado Logistica']);

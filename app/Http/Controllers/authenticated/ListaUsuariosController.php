@@ -74,7 +74,7 @@ class ListaUsuariosController extends Controller
         ];
         $rules = [
             'name' => ['required', 'string', 'max:255'],
-            'cedula' => ['required', 'integer', 'integer', 'min:10000000'],
+            'cedula' => ['required', 'integer', 'min:10000000'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'cargo' => ['required', 'string', 'in:Administrador,Tesorero,Contador,Encargado Logistica'],
             'password' => [],
