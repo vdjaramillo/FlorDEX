@@ -26,13 +26,26 @@
             @endforeach
         </tbody>
     </table>
-    <form action="" method="GET">
-        <label for="fecha_inicio">Fecha Inicio</label>
-        <input type="date" class="form-control" value="Fecha Inicio"/>
-        <label for="fecha_fin">Fecha Fin</label>
-        <input type="date"class="form-control"  value="Fecha Fin"/>
-        <input type="text" class="form-control" placeholder="Nombre Tipo Informe"/>
-        <input type="submit" class="btn btn-submit" style="background:var(--fresh)" value="Generar Informe"/>
+
+    <form class="form-inline">
+        <div class="form-group mb-2">
+            <label for="informe" >Seleccionar Informe    </label>
+            <select class="form-control" id="informe" name="informe" title="Seleccione una opción" required>
+                <option value="" selected>Seleccione una opción</option>
+                @foreach($tiposInforme as $tipoInforme)
+                    <option value="{{ $tipoInforme->id }}">{{ $tipoInforme->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group mb-2">
+            <label for="staticEmail2" >Fecha Inicial:    </label>
+            <input type="date" class="form-control" id="staticEmail2" value="email@example.com">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2">Fecha Final:    </label>
+            <input type="date" class="form-control" id="inputPassword2" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Generar Informe</button>
     </form>
     <script>
             function Ver(id) {

@@ -33,14 +33,6 @@ class CreateInformeDatosTable extends Migration
 
             $table->primary(['dato_dex_id', 'tipo_informe_id']);
         });
-
-        $informe = \App\Models\Tipo_informe::create(['nombre' => 'DEX_POR_CLIENTE']);
-        $informe->datos_dex()->attach(12);
-        $informe->datos_dex()->attach(5);
-        $informe->datos_dex()->attach(8);
-        $informe->datos_dex()->attach(14);
-        $informe->datos_dex()->attach(2);
-        $informe->datos_dex()->attach(13);
     }
 
     /**

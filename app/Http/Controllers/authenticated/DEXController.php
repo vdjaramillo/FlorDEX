@@ -1,9 +1,12 @@
 <?php
 namespace App\Http\Controllers\authenticated;
 
+use App\Models\Tipo_informe;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\DEX\DEX;
+use Spatie\Permission\Models\Role;
 
 class DEXController extends Controller
 {
@@ -29,12 +32,13 @@ class DEXController extends Controller
             // Algo esta mal
             return redirect()->back()->withErrors($validator->messages())->withInput();
         }
-        
+
         DEX::create($_POST);
         return view('authenticated.usuarios.log');
     }
     public function listar(){
-        return view('authenticated.usuarios.contes',['dex'=>DEX::all()]);
+
+        return view('authenticated.usuarios.contes',['dex'=>DEX::all(), 'tiposInforme' => Auth::user()->roles()->first()->tipos_informe]);
     }
     public function ver($dex){
         return view('authenticated.usuarios.editdex', ['dex' => DEX::findbynumdex($dex)]);
