@@ -26,6 +26,28 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>Usuarios a generar el informe</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($roles as $rol)
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="rol{{$rol->id}}"
+                                               name="rol{{$rol->id}}" {{old('rol'.$rol->id) ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="rol{{$rol->id}}">
+                                            {{$rol->name}}
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
                             <th>Atributos</th>
                         </tr>
                         </thead>
@@ -35,7 +57,7 @@
                                 <td>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="{{$dato->id}}"
-                                               name="{{$dato->nombre}}" {{old($dato->nombre) ? 'checked' : ''}}>
+                                               name="{{$dato->id}}" {{old($dato->id) ? 'checked' : ''}}>
                                         <label class="custom-control-label" for="{{$dato->id}}">
                                             {{$dato->nombre}}
                                         </label>

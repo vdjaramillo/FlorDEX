@@ -39,8 +39,8 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         $this->setAlert('success', 'Se ha guardado la información correctamente');
-        return redirect($this->redirectPath());   
-    }    
+        return redirect($this->redirectPath());
+    }
     public function __construct()
     {
             $this->middleware('role:Administrador');
@@ -69,13 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        User::create([
+        $user = User::create([
             'name' => $data['name'],
             'cedula' => $data['cedula'],
             'email' => $data['email'],
             'cargo' => $data['cargo'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole($data['cargo']);
+
         return Mail::send('emails.register',['data'=>$data], function ($message) use ($data){
             $message->from('FlorDex@floresdealtagracia.com', 'FlorDEX');
             $message->subject('Bienvenido a FlorDEX');

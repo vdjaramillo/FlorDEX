@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class TipoInformeController extends Controller
 {
@@ -44,7 +45,8 @@ class TipoInformeController extends Controller
     public function create()
     {
         $datos_dex = Dato_dex::all();
-        return view('authenticated.informes.create',compact('datos_dex'));
+        $roles = Role::all();
+        return view('authenticated.informes.create',compact('datos_dex','roles'));
     }
 
     /**
@@ -65,9 +67,32 @@ class TipoInformeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if(count((array)$input) == 2){
-            //Se debe enviar un mensaje que debe seleccionar al menos un un dato
-            $this->setAlert('danger', 'Debes seleccionar al menos un dato');
+        //Se revisa que seleccionen al menos un visualizador
+        $roles = Role::all();
+        $count = 0;
+        foreach ($roles as $rol){
+            $id_input = 'rol'.$rol->id;
+            if(!isset($input->$id_input)){
+                $count++;
+            }
+        }
+        if(count($roles) == $count){
+            $this->setAlert('danger', 'Debes seleccionar al menos un tipo de usuario para ver el informe');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        //Se revisa que seleccione al menos un dato dex
+        $datos_dex = Dato_dex::all();
+        $count = 0;
+        foreach ($datos_dex as $dato){
+            $id_input = $dato->id;
+            if(!isset($input->$id_input)){
+                $count++;
+            }
+        }
+
+        if(count($datos_dex) == $count){
+            $this->setAlert('danger', 'Debes seleccionar al menos un dato dex');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -76,13 +101,19 @@ class TipoInformeController extends Controller
 
 
         if ($tipo_informe->save()) {
-            $datos_dex = Dato_dex::all();
+            foreach ($roles as $rol){
+                $id = 'rol'.$rol->id;
+                if(isset($input->$id)){
+                    $tipo_informe->roles()->attach($rol->id);
+                }
+            }
             foreach ($datos_dex as $dato){
-                $nombre = $dato->nombre;
-                if(isset($input->$nombre)){
+                $id = $dato->id;
+                if(isset($input->$id)){
                     $tipo_informe->datos_dex()->attach($dato->id);
                 }
             }
+
 
             $this->setAlert('success', 'Se ha guardado la información correctamente');
             return redirect(action('authenticated\TipoInformeController@index'));
@@ -114,7 +145,8 @@ class TipoInformeController extends Controller
     {
         $tipo_informe = Tipo_informe::find($id);
         $datos_dex = Dato_dex::all();
-        return view('authenticated.informes.edit',compact('tipo_informe','datos_dex'));
+        $roles = Role::all();
+        return view('authenticated.informes.edit',compact('tipo_informe','datos_dex','roles'));
     }
 
     /**
@@ -140,22 +172,53 @@ class TipoInformeController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-            if(count((array)$input) == 2){
-                //Se debe enviar un mensaje que debe seleccionar al menos un un dato
-                $this->setAlert('danger', 'Debes seleccionar al menos un dato');
+            //Se revisa que seleccionen al menos un visualizador
+            $roles = Role::all();
+            $count = 0;
+            foreach ($roles as $rol){
+                $id_input = 'rol'.$rol->id;
+                if(!isset($input->$id_input)){
+                    $count++;
+                }
+            }
+            if(count($roles) == $count){
+                $this->setAlert('danger', 'Debes seleccionar al menos un tipo de usuario para ver el informe');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            //Se revisa que seleccione al menos un dato dex
+            $datos_dex = Dato_dex::all();
+            $count = 0;
+            foreach ($datos_dex as $dato){
+                $id_input = $dato->id;
+                if(!isset($input->$id_input)){
+                    $count++;
+                }
+            }
+
+            if(count($datos_dex) == $count){
+                $this->setAlert('danger', 'Debes seleccionar al menos un dato dex');
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
             $tipo_informe->fill($request->input());
             if ($tipo_informe->save()) {
                 $tipo_informe->datos_dex()->detach();
-                $datos_dex = Dato_dex::all();
+                $tipo_informe->roles()->detach();
+
+                foreach ($roles as $rol){
+                    $id = 'rol'.$rol->id;
+                    if(isset($input->$id)){
+                        $tipo_informe->roles()->attach($rol->id);
+                    }
+                }
                 foreach ($datos_dex as $dato){
-                    $nombre = $dato->nombre;
-                    if(isset($input->$nombre)){
+                    $id = $dato->id;
+                    if(isset($input->$id)){
                         $tipo_informe->datos_dex()->attach($dato->id);
                     }
                 }
+
                 $this->setAlert('success', 'Se ha actualizado la información correctamente');
 
                 return redirect(action('authenticated\TipoInformeController@index'));

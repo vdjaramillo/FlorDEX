@@ -109,6 +109,7 @@ class ListaUsuariosController extends Controller
             $data['password'] = Hash::make($_POST['password']);
         }
         $user->update($data);
+
         return redirect('usuario/lista');
     }
 }

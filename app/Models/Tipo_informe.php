@@ -3,6 +3,7 @@
 namespace App\Models;
 //use App\
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Role;
 
 class Tipo_informe extends Model
 {
@@ -15,6 +16,12 @@ class Tipo_informe extends Model
     public function datos_dex()
     {
         return $this->belongsToMany('App\Models\DEX\Dato_dex','informe_datos','tipo_informe_id', 'dato_dex_id')
+            ->withTimestamps();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('Spatie\Permission\Models\Role','tipo_informe_rol','tipo_informe_id', 'rol_id')
             ->withTimestamps();
     }
 }

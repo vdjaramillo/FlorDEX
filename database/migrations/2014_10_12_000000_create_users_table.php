@@ -25,13 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        \App\User::create([
-            'name' => 'administrador',
-            'email' => 'administrador@unal.edu.co',
-            'cedula' => 102931,
-            'cargo' => 'Administrador',
-            'password' => Hash::make(123),
-        ]);
+
     }
 
     /**
