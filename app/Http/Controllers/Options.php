@@ -12,10 +12,10 @@ class Options extends Controller
                 return view('authenticated.usuarios.admin');
                 break;
             case "Tesorero":
-                return view('authenticated.usuarios.tes');
+                return redirect('/dex/listar');
                 break;
             case "Contador":
-                return view('authenticated.usuarios.cont');
+                return redirect('/dex/listar');
                 break;
             case "Encargado Logistica":
                 return view('authenticated.usuarios.log');

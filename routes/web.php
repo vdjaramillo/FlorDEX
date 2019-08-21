@@ -27,3 +27,13 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
 });
 //Ruta para creacion dex
 Route::post('/dex/crear','authenticated\DEXController@crear')->name('crear-dex')->middleware(['auth','role:Encargado Logistica']);
+//Ruta para listar dex
+Route::get('/dex/listar','authenticated\DEXController@listar')->name('listar-dex')->middleware(['auth','role:Contador']);
+Route::get('/dex/listar','authenticated\DEXController@listar')->name('listar-dex')->middleware(['auth','role:Tesorero']);
+//Ruta para ver dex
+Route::get('/dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex')->middleware(['auth','role:Tesorero']);
+Route::get('/dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex')->middleware(['auth','role:Contador']);
+//Ruta para editar dex
+Route::post('/dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex')->middleware(['auth','role:Tesorero']);
+Route::post('/dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex')->middleware(['auth','role:Contador']);
+

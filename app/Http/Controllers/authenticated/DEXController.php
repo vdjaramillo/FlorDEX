@@ -33,4 +33,18 @@ class DEXController extends Controller
         DEX::create($_POST);
         return view('authenticated.usuarios.log');
     }
+    public function listar(){
+        return view('authenticated.usuarios.contes',['dex'=>DEX::all()]);
+    }
+    public function ver($dex){
+
+    }
+    public function editar(){
+
+    }
+    public function legalizar(){
+
+    }
+    public function informe(){
+    }
 }
