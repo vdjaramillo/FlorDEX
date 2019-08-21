@@ -26,9 +26,18 @@
             @endforeach
         </tbody>
     </table>
+    <form action="" method="GET">
+        <label for="fecha_inicio">Fecha Inicio</label>
+        <input type="date" class="form-control" value="Fecha Inicio"/>
+        <label for="fecha_fin">Fecha Fin</label>
+        <input type="date"class="form-control"  value="Fecha Fin"/>
+        <input type="text" class="form-control" placeholder="Nombre Tipo Informe"/>
+        <input type="submit" class="btn btn-submit" style="background:var(--fresh)" value="Generar Informe"/>
+    </form>
     <script>
             function Ver(id) {
                 alert(id);
+                location.href="../dex/ver/"+id;
             }
     </script>
 @endsection

@@ -3,7 +3,6 @@ Route::get('/', 'Main@index');
 Route::get('/iniciar-sesion', 'Auth\LoginController@login')->name('iniciar-sesion');
 Auth::routes();
 Route::get('usuario/opciones', 'Options@index')->name('opciones-de-usuario')->middleware('auth');
-
 //Rutas para Administrador
 Route::middleware(['auth','role:Administrador'])->group(function () {
     //Rutas para usuarios
@@ -26,14 +25,18 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
     
 });
 //Ruta para creacion dex
-Route::post('/dex/crear','authenticated\DEXController@crear')->name('crear-dex')->middleware(['auth','role:Encargado Logistica']);
-//Ruta para listar dex
-Route::get('/dex/listar','authenticated\DEXController@listar')->name('listar-dex')->middleware(['auth','role:Contador']);
-Route::get('/dex/listar','authenticated\DEXController@listar')->name('listar-dex')->middleware(['auth','role:Tesorero']);
-//Ruta para ver dex
-Route::get('/dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex')->middleware(['auth','role:Tesorero']);
-Route::get('/dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex')->middleware(['auth','role:Contador']);
-//Ruta para editar dex
-Route::post('/dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex')->middleware(['auth','role:Tesorero']);
-Route::post('/dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex')->middleware(['auth','role:Contador']);
-
+Route::post('dex/crear','authenticated\DEXController@crear')->name('crear-dex')->middleware(['auth','role:Encargado Logistica']);
+//Ruta para tesorero
+Route::middleware(['auth','role:Tesorero'])->group(function () {
+    Route::get('dex/listar','authenticated\DEXController@listar')->name('listar-dex');
+    Route::get('dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex');
+    Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
+});
+//Ruta para contador
+/*
+Route::middleware(['auth','role:Contador'])->group(function () {
+    Route::get('dex/listar','authenticated\DEXController@listar')->name('listar-dex');
+    Route::get('dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex');
+    Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
+});
+*/

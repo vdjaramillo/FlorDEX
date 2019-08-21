@@ -37,7 +37,7 @@ class DEXController extends Controller
         return view('authenticated.usuarios.contes',['dex'=>DEX::all()]);
     }
     public function ver($dex){
-
+        return view('authenticated.usuarios.editdex', ['dex' => DEX::findbynumdex($dex)]);
     }
     public function editar(){
 

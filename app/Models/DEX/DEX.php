@@ -3,6 +3,7 @@
 namespace App\Models\DEX;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class DEX extends Model
 {
@@ -24,4 +25,8 @@ class DEX extends Model
             'fecha_embarque',
             'agencia',
     ];
+
+    public static function findbynumdex($dex){
+        return DB::table('dex')->where('numero_dex', $dex)->first();
+    }
 }
