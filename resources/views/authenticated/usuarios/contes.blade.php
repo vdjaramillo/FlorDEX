@@ -27,23 +27,34 @@
         </tbody>
     </table>
 
-    <form class="form-inline">
+    <form class="form-inline" action="{{route('generar')}}" method="POST">
+        @csrf
         <div class="form-group mb-2">
             <label for="informe" >Seleccionar Informe </label>
             <select class="form-control" id="informe" name="informe" title="Seleccione una opción" required>
                 <option value="" selected>Seleccione una opción</option>
                 @foreach($tiposInforme as $tipoInforme)
-                    <option value="{{ $tipoInforme->id }}">{{ $tipoInforme->nombre }}</option>
+                    <option value="{{ $tipoInforme->id }}" {{old('informe') ? old('informe') == $tipoInforme->id ? 'selected' : '' : '' }}>{{ $tipoInforme->nombre }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group mb-2">
-            <label for="staticEmail2" >Fecha Inicial: </label>
-            <input type="date" class="form-control" id="fecha_inicial" name="" value="email@example.com">
+            <label for="fecha_inicial" >Fecha Inicial: </label>
+            <input type="date" class="form-control" id="fecha_inicial" name="fecha_inicial" value="{{old('fecha_inicial') ? old('fecha_inicial')  : ''}}" required>
+            @if ($errors->has('fecha_inicial'))
+                <span class="help-block mx-sm-3 mb-2">
+                    <strong class="bg-danger">{{ $errors->first('fecha_inicial') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2">Fecha Final: </label>
-            <input type="date" class="form-control" id="inputPassword2" placeholder="Password">
+            <label for="fecha_final">Fecha Final: </label>
+            <input type="date" class="form-control" id="fecha_final" name="fecha_final" value="{{old('fecha_final') ? old('fecha_final')  : ''}}" required>
+            @if ($errors->has('fecha_final'))
+                <span class="help-block mx-sm-3 mb-2">
+                    <strong class="bg-danger">{{ $errors->first('fecha_final') }}</strong>
+                </span>
+            @endif
         </div>
         <button type="submit" class="btn btn-primary mb-2">Generar Informe</button>
     </form>

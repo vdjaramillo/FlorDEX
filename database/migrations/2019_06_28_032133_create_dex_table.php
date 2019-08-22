@@ -30,8 +30,9 @@ class CreateDexTable extends Migration
             $table->string('cliente');
             $table->date('fecha_embarque');
             $table->string('agencia');
-            $table->float('legalizacion')->nullable();
-            $table->float('valor_real_factura')->nullable();
+            $table->float('legalizacion')->default(0);
+            $table->float('valor_real_factura')->default(0);
+            $table->float('diferencia')->default(0);
             $table->timestamps();
         });
     }

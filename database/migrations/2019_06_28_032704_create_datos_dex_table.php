@@ -22,73 +22,83 @@ class CreateDatosDexTable extends Migration
         });
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Declaracion_de_cambio',
+            'nombre' => 'declaracion_de_cambio',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Fecha_DEX',
+            'nombre' => 'fecha_dex',
             'tipo' => 'date',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Vr_Declaracion',
+            'nombre' => 'vr_declaracion',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Fecha_Presentacion',
+            'nombre' => 'fecha_presentacion',
             'tipo' => 'date',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Número_DEX',
+            'nombre' => 'numero_dex',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Fecha_Aceptación',
+            'nombre' => 'fecha_aceptacion',
             'tipo' => 'date',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Ciudad',
+            'nombre' => 'ciudad',
             'tipo' => 'string',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Valor',
+            'nombre' => 'valor',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Manifiesto',
+            'nombre' => 'manifiesto',
             'tipo' => 'string',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Número_Factura',
+            'nombre' => 'numero_factura',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Valor_Factura',
+            'nombre' => 'valor_factura',
             'tipo' => 'number',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Cliente',
+            'nombre' => 'cliente',
             'tipo' => 'string',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Fecha_Embarque',
+            'nombre' => 'fecha_embarque',
             'tipo' => 'date',
         ]);
 
         \App\Models\DEX\Dato_dex::create([
-            'nombre' => 'Agencia',
+            'nombre' => 'agencia',
             'tipo' => 'string',
+        ]);
+
+        \App\Models\DEX\Dato_dex::create([
+            'nombre' => 'legalizacion',
+            'tipo' => 'float',
+        ]);
+
+        \App\Models\DEX\Dato_dex::create([
+            'nombre' => 'valor_real_factura',
+            'tipo' => 'float',
         ]);
     }
 
