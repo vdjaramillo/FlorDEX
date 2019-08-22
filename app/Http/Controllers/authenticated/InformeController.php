@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\authenticated;
 
+use App\Exports\DexExport;
 use App\Models\DEX\DEX;
+use App\Models\Tipo_informe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InformeController extends Controller
 {
@@ -56,8 +59,19 @@ class InformeController extends Controller
         }
         $dex_encontrados = DEX::whereDate('fecha_dex','>=', $input->fecha_inicial)->whereDate('fecha_dex','<=', $input->fecha_final)->get();
 
+//        $informe = Tipo_informe::find($input->informe);
+//        foreach ($informe->datos_dex as $index => $dato){
+//            foreach ($dex_encontrados as $dex){
+//                $nombre = $dex->nombre;
+//                unset($dex->$nombre);
+//            }
+//        }
+
+        //dd($dex_encontrados);
 
 
+
+        return Excel::download((new DexExport($dex_encontrados)), 'informe.xlsx');
         dd($dex_encontrados);
     }
 }
