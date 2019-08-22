@@ -8,7 +8,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Users extends Model
 {
-    use HasRoles;
 
     protected $fillable = [
         'name', 'cedula', 'email', 'password', 'cargo',

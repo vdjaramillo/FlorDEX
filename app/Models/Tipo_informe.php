@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Models;
-//use App\
+use App\Role;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Models\Role;
 
 class Tipo_informe extends Model
 {
@@ -21,7 +20,7 @@ class Tipo_informe extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('Spatie\Permission\Models\Role','tipo_informe_rol','tipo_informe_id', 'rol_id')
+        return $this->belongsToMany('App\Role','tipo_informe_rol','tipo_informe_id', 'rol_id')
             ->withTimestamps();
     }
 }

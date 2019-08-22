@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email" class="col-md-5 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -64,7 +64,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password-confirm" class="col-md-5 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -72,17 +72,16 @@
                         <input id="password-confirm" disabled type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="cargo" class="col-md-5 col-form-label text-md-right">Cargo</label>
 
                     <div class="col-md-6">
-                    <select id="cargo" name="cargo" class="form-control" value="{{$user->cargo }}">
-                            <option value="Administrador">Administrador</option>
-                            <option value="Tesorero">Tesorero</option>
-                            <option value="Contador">Contador</option>
-                            <option value="Encargado Logistica">Encargado de Logística</option>
-                    </select>
+                        <select id="cargo" name="cargo" class="form-control">
+                            @foreach($roles as $rol)
+                                <option value="{{$rol->name}}" {{$rol->name == $user->cargo ? 'selected' : ''}}>{{$rol->name}}</option>
+                            @endforeach
+                        </select>
                         @error('cargo')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -90,7 +89,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">

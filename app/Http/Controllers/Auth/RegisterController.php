@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -76,7 +77,7 @@ class RegisterController extends Controller
             'cargo' => $data['cargo'],
             'password' => Hash::make($data['password']),
         ]);
-        $user->assignRole($data['cargo']);
+        $user->roles()->attach(Role::where('name', $data['cargo'])->first());
 
         return Mail::send('emails.register',['data'=>$data], function ($message) use ($data){
             $message->from('FlorDex@floresdealtagracia.com', 'FlorDEX');

@@ -29,7 +29,7 @@
 
     <form class="form-inline">
         <div class="form-group mb-2">
-            <label for="informe" >Seleccionar Informe    </label>
+            <label for="informe" >Seleccionar Informe </label>
             <select class="form-control" id="informe" name="informe" title="Seleccione una opción" required>
                 <option value="" selected>Seleccione una opción</option>
                 @foreach($tiposInforme as $tipoInforme)
@@ -38,11 +38,11 @@
             </select>
         </div>
         <div class="form-group mb-2">
-            <label for="staticEmail2" >Fecha Inicial:    </label>
-            <input type="date" class="form-control" id="staticEmail2" value="email@example.com">
+            <label for="staticEmail2" >Fecha Inicial: </label>
+            <input type="date" class="form-control" id="fecha_inicial" name="" value="email@example.com">
         </div>
         <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2">Fecha Final:    </label>
+            <label for="inputPassword2">Fecha Final: </label>
             <input type="date" class="form-control" id="inputPassword2" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary mb-2">Generar Informe</button>

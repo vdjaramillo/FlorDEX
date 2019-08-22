@@ -15,13 +15,13 @@ class CreateTipoInformeRolTable extends Migration
     {
         Schema::create('tipo_informe_rol', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->unsignedInteger('rol_id');
+            $table->bigInteger('rol_id')->unsigned();
             $table->unsignedInteger('tipo_informe_id');
             $table->timestamps();
 
             $table->foreign('rol_id')
                 ->references('id')
-                ->on('roles')
+                ->on('roless')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

@@ -6,22 +6,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\User;
+use App\Role;
 
 class ListaUsuariosController extends Controller
 {
     public function index()
     {
 
-        return view('authenticated.usuarios.list', ['users' => Users::all()]);
+        return view('authenticated.usuarios.list', ['users' => User::all()]);
 
     }
 
     public function delete($cc)
     {
-        $user = Users::findbycc($cc);
+        $user = User::findbycc($cc);
         if (strcmp($user->cargo, "Administrador") == 0) {
-            $users = Users::getbycargo($user->cargo);
+            $users = User::getbycargo($user->cargo);
             if (count($users) == 1) {
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
@@ -29,14 +30,14 @@ class ListaUsuariosController extends Controller
                         </script>';
             }
         }
-        Users::destroy($user->id);
+        User::destroy($user->id);
         return redirect('usuario/lista');
 
     }
 
     public function edit($cc)
     {
-        return view('authenticated.usuarios.edit', ['user' => Users::findbycc($cc)]);
+        return view('authenticated.usuarios.edit', ['user' => User::findbycc($cc), 'roles' => Role::all()]);
     }
 
     public function search()
@@ -47,7 +48,7 @@ class ListaUsuariosController extends Controller
         location.href="'.route('lista-usuarios').'";
         </script>';
         }
-        $user = Users::findbycc($_POST['busq']);
+        $user = User::findbycc($_POST['busq']);
         if (is_null($user)) {
             return '
         <script>
@@ -79,9 +80,9 @@ class ListaUsuariosController extends Controller
             'cargo' => ['required', 'string', 'in:Administrador,Tesorero,Contador,Encargado Logistica'],
             'password' => [],
         ];
-        $user = Users::findorfail($_POST['id']);
+        $user = User::findorfail($_POST['id']);
         if (strcmp($user->cargo, $data['cargo']) != 0 and strcmp($user->cargo, "Administrador") == 0) {
-            $users = Users::getbycargo($user->cargo);
+            $users = User::getbycargo($user->cargo);
             if (count($users) == 1) {
                 return '<script>
                                 alert("Debe existir al menos un Administrador en el sitio");
@@ -108,7 +109,9 @@ class ListaUsuariosController extends Controller
         if (!empty($_POST['password'])) {
             $data['password'] = Hash::make($_POST['password']);
         }
+        $user->roles()->detach();
         $user->update($data);
+        $user->roles()->attach(Role::where('name', $data['cargo'])->first());
 
         return redirect('usuario/lista');
     }
