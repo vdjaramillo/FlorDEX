@@ -22,7 +22,7 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
     Route::post('tipo/informe/{id}/editar', 'authenticated\TipoInformeController@update')->name('tipo_informe_update')->where('id', '[0-9]+');;
     Route::get('tipos/informes/{id}/eliminar', 'authenticated\TipoInformeController@destroy')->name('tipo_informe_delete')->where('id', '[0-9]+');;
 
-    
+
 });
 //Ruta para creacion dex
 Route::post('dex/crear','authenticated\DEXController@crear')->name('crear-dex')->middleware(['auth','role:Encargado Logistica']);
@@ -32,6 +32,8 @@ Route::middleware(['auth','role:Tesorero'])->group(function () {
     Route::get('dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex');
     Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
 });
+
+Route::post('dex/generar/informe','authenticated\InformeController@generarInforme')->name('generar');
 //Ruta para contador
 /*
 Route::middleware(['auth','role:Contador'])->group(function () {
