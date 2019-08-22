@@ -54,7 +54,10 @@ class InformeController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $dex_encontrados = DEX::whereDate('fecha_dex','>=', $input->datetime_inicial)->whereDate('fecha_dex','<=', $input->datetime_final)->get();
+        $dex_encontrados = DEX::whereDate('fecha_dex','>=', $input->fecha_inicial)->whereDate('fecha_dex','<=', $input->fecha_final)->get();
+
+
+
         dd($dex_encontrados);
     }
 }

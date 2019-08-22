@@ -24,6 +24,8 @@ class DEX extends Model
             'cliente',
             'fecha_embarque',
             'agencia',
+            'legalizacion',
+            'valor_real_factura',
     ];
 
     public static function findbynumdex($dex){
