@@ -4,10 +4,11 @@
 @endsection
 @section('contenido')
 <div class="card col-md-8 row justify-content-center">
+    <?php  $anterior = $dex->numero_dex;?>
     @if(auth()->user()->cargo==="Tesorero")
-    <form action="{{ route('editar-dex') }}" method="post">
+<form action="{{ route('editar-dex',["dex" => $anterior]) }}" method="post">
     @else
-    <form action="{{ route('editar-dex2') }}" method="post">
+    <form action="{{ route('editar-dex2',["dex" => $anterior]) }}" method="post">
     @endif
         @csrf
         <div class="form-group">
@@ -166,22 +167,21 @@
         </div>
         @if(auth()->user()->cargo==="Tesorero")
         <div class="form-group">
-            <label class="col-md-5 col-form-label text-md-right"  for="agencia">Agencia</label>
+            <label class="col-md-5 col-form-label text-md-right"  for="legalizacion">Legalización</label>
             <div class="col-md-6">
-                <input value="{{$dex->agencia}}" id="agencia" type="text" class="form-control @error('agencia') is-invalid @enderror" name="agencia" required autocomplete="agencia" autofocus>
-                @error('agencia')
+                <input value="{{$dex->legalizacion}}" id="legalizacion" type="number" class="form-control @error('legalizacion') is-invalid @enderror" name="legalizacion" required autocomplete="legalizacion" autofocus>
+                @error('legalizacion')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
         </div>
-        @else
         <div class="form-group">
-            <label class="col-md-5 col-form-label text-md-right"  for="agencia">Agencia</label>
+            <label class="col-md-5 col-form-label text-md-right"  for="valor_real_factura">Valor real factura</label>
             <div class="col-md-6">
-                <input value="{{$dex->agencia}}" id="agencia" type="text" class="form-control @error('agencia') is-invalid @enderror" name="agencia" required autocomplete="agencia" autofocus>
-                @error('agencia')
+                <input value="{{$dex->valor_real_factura}}" id="valor_real_factura" type="number" class="form-control @error('valor_real_factura') is-invalid @enderror" name="valor_real_factura" required autocomplete="valor_real_factura" autofocus>
+                @error('valor_real_factura')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -189,7 +189,7 @@
             </div>
         </div>
         @endif
-        <input type="checkbox" name="editar" onchange="Editar(this.checked)"/>
+        <input type="checkbox" name="editar" value="1" onchange="Editar(this.checked)"/>
         <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Editar">
     </form>
 </div>

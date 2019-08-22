@@ -3,7 +3,11 @@
 <strong>{{auth()->user()->cargo}}: {{auth()->user()->name}}</strong>
 @endsection
 @section('contenido')
-<form action="{{ route('lista-usuarios') }}" method="POST">
+@if(auth()->user()->cargo==="Tesorero")
+<form action="{{ route('buscar-dex') }}" method="post">
+    @else
+    <form action="{{ route('buscar-dex2')}}" method="post">
+    @endif
     @csrf
     <input name="busq" required class="col-form-label form-control" type="text" placeholder="Buscar por Cliente" />
     <input value="Buscar" type="submit" class="btn btn-secondary"/>
@@ -58,10 +62,18 @@
         </div>
         <button type="submit" class="btn btn-primary mb-2">Generar Informe</button>
     </form>
+    @if(auth()->user()->cargo=="Tesorero")
     <script>
-            function Ver(id) {
-                alert(id);
-                location.href="../dex/ver/"+id;
-            }
+        function Ver(id) {
+            location.href="../dex/ver/"+id;
+        }
     </script>
+    @else
+    <script>
+        function Ver(id) {
+            location.href="../dex/ver2/"+id;
+        }
+</script>
+    @endif
+    
 @endsection

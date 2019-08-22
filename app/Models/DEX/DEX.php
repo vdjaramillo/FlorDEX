@@ -31,4 +31,7 @@ class DEX extends Model
     public static function findbynumdex($dex){
         return DB::table('dex')->where('numero_dex', $dex)->first();
     }
+    public static function getbycliente($cliente){
+        return DB::table('dex')->where('cliente', $cliente)->get();
+    }
 }

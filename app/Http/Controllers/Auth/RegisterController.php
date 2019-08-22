@@ -35,6 +35,9 @@ class RegisterController extends Controller
  * @param  \Illuminate\Http\Request  $request
  * @return \Illuminate\Http\Response
  */
+    public function showRegistrationForm(){
+        return view('auth.register',['roles' => Role::all()]);
+    }
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();

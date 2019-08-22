@@ -67,7 +67,7 @@ class DexSeeder extends Seeder
             'fecha_dex' => '2019-02-07',
             'vr_declaracion' => 55,
             'fecha_presentacion' => '2019-02-08',
-            'numero_dex' => 3,
+            'numero_dex' => 4,
             'fecha_aceptacion' => '2019-02-08',
             'ciudad' => 'Rionegro',
             'valor' => 200000,

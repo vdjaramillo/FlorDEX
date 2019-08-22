@@ -20,7 +20,7 @@ class CreateDexTable extends Migration
             $table->date('fecha_dex');
             $table->integer('vr_declaracion');
             $table->date('fecha_presentacion');
-            $table->integer('numero_dex');
+            $table->integer('numero_dex')->unique();
             $table->date('fecha_aceptacion');
             $table->string('ciudad');
             $table->integer('valor');

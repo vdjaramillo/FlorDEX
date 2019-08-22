@@ -30,7 +30,8 @@ Route::post('dex/crear','authenticated\DEXController@crear')->name('crear-dex')-
 Route::middleware(['auth','role:Tesorero'])->group(function () {
     Route::get('dex/listar','authenticated\DEXController@listar')->name('listar-dex');
     Route::get('dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex');
-    Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
+    Route::post('dex/editar/{dex}','authenticated\DEXController@legalizar')->name('editar-dex');
+    Route::post('dex/buscar','authenticated\DEXController@buscar')->name('buscar-dex');
 });
 
 Route::post('dex/generar/informe','authenticated\InformeController@generarInforme')->name('generar');
@@ -40,4 +41,5 @@ Route::middleware(['auth','role:Contador'])->group(function () {
     Route::get('dex/listar2','authenticated\DEXController@listar')->name('listar-dex2');
     Route::get('dex/ver2/{dex}','authenticated\DEXController@ver')->name('ver-dex2');
     Route::post('dex/editar2/{dex}','authenticated\DEXController@editar')->name('editar-dex2');
+    Route::post('dex/buscar2','authenticated\DEXController@buscar')->name('buscar-dex2');
 });

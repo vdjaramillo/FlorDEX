@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
 use App\Role;
 
 class UserSeeder extends Seeder
@@ -23,8 +22,6 @@ class UserSeeder extends Seeder
                     'cargo' => 'Administrador',
                     'password' => Hash::make(123),
                 ]);
-
-        $user->roles()->attach($role->id);
 
         $role = Role::create(['name' => 'Encargado Logistica']);
         $user= \App\User::create([
