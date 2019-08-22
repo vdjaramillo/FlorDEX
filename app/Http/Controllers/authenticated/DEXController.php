@@ -37,13 +37,12 @@ class DEXController extends Controller
         return view('authenticated.usuarios.log');
     }
     public function listar(){
-
         return view('authenticated.usuarios.contes',['dex'=>DEX::all(), 'tiposInforme' => Auth::user()->roles()->first()->tipos_informe]);
     }
     public function ver($dex){
         return view('authenticated.usuarios.editdex', ['dex' => DEX::findbynumdex($dex)]);
     }
-    public function editar(){
+    public function editar($dex){
 
     }
     public function legalizar(){

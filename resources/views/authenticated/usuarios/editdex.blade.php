@@ -4,7 +4,11 @@
 @endsection
 @section('contenido')
 <div class="card col-md-8 row justify-content-center">
-    <form action="" method="get">
+    @if(auth()->user()->cargo==="Tesorero")
+    <form action="{{ route('editar-dex') }}" method="post">
+    @else
+    <form action="{{ route('editar-dex2') }}" method="post">
+    @endif
         @csrf
         <div class="form-group">
             <label class="col-md-5 col-form-label text-md-right" for="declaracion_de_cambio">Declaración de Cambio</label>
@@ -21,7 +25,7 @@
             <label class="col-md-5 col-form-label text-md-right"  for="fecha_dex">Fecha DEX</label>
             <div class="col-md-6">
                 <input disabled value="{{$dex->fecha_dex}}"id="fecha_dex" type="date" class="form-control @error('fecha_dex') is-invalid @enderror" name="fecha_dex" required autocomplete="fecha_dex" autofocus>
-                @error('fecha_dex')
+                @error('fecha_dex') 
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -32,7 +36,7 @@
             <label class="col-md-5 col-form-label text-md-right"  for="vr_declaracion">Valor Declaración</label>
             <div class="col-md-6">
                 <input disabled value="{{$dex->vr_declaracion}}"  id="vr_declaracion" type="number" class="form-control @error('vr_declaracion') is-invalid @enderror" name="vr_declaracion" required autocomplete="vr_declaracion" autofocus>
-                @error('vr_declaracion')
+                @error('vr_declaracion') declaracion_de_cambio fecha_dex vr_declaracion
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -43,7 +47,7 @@
             <label  class="col-md-5 col-form-label text-md-right" for="fecha_presentacion">Fecha Presentación</label>
             <div class="col-md-6">
                 <input disabled value="{{$dex->fecha_presentacion}}" id="fecha_presentacion" type="date" class="form-control @error('fecha_presentacion') is-invalid @enderror" name="fecha_presentacion" required autocomplete="fecha_presentacion" autofocus>
-                @error('fecha_presentacion')
+                @error('fecha_presentacion')declaracion_de_cambio fecha_dex vr_declaracion fecha_presentacion
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -54,7 +58,7 @@
             <label  class="col-md-5 col-form-label text-md-right" for="numero_dex">Numero DEX</label>
             <div class="col-md-6">
                 <input disabled value="{{$dex->numero_dex}}" id="numero_dex" type="number" class="form-control @error('numero_dex') is-invalid @enderror" name="numero_dex" required autocomplete="numero_dex" autofocus>
-                @error('numero_dex')
+                @error('numero_dex') 
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -160,7 +164,71 @@
                 @enderror
             </div>
         </div>
-        <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Crear">
+        @if(auth()->user()->cargo==="Tesorero")
+        <div class="form-group">
+            <label class="col-md-5 col-form-label text-md-right"  for="agencia">Agencia</label>
+            <div class="col-md-6">
+                <input value="{{$dex->agencia}}" id="agencia" type="text" class="form-control @error('agencia') is-invalid @enderror" name="agencia" required autocomplete="agencia" autofocus>
+                @error('agencia')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        @else
+        <div class="form-group">
+            <label class="col-md-5 col-form-label text-md-right"  for="agencia">Agencia</label>
+            <div class="col-md-6">
+                <input value="{{$dex->agencia}}" id="agencia" type="text" class="form-control @error('agencia') is-invalid @enderror" name="agencia" required autocomplete="agencia" autofocus>
+                @error('agencia')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        @endif
+        <input type="checkbox" name="editar" onchange="Editar(this.checked)"/>
+        <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Editar">
     </form>
 </div>
+<script>
+function Editar(value){
+    if(value==true)
+			{
+				// habilitamos
+                document.getElementById("declaracion_de_cambio").disabled=false;
+                document.getElementById("fecha_dex").disabled=false;
+                document.getElementById("vr_declaracion").disabled=false;
+                document.getElementById("fecha_presentacion").disabled=false;
+                document.getElementById("numero_dex").disabled=false;
+                document.getElementById("fecha_aceptacion").disabled=false;
+                document.getElementById("ciudad").disabled=false;
+                document.getElementById("valor").disabled=false;
+                document.getElementById("manifiesto").disabled=false;
+                document.getElementById("numero_factura").disabled=false;
+                document.getElementById("valor_factura").disabled=false;
+                document.getElementById("cliente").disabled=false;
+                document.getElementById("fecha_embarque").disabled=false;
+                document.getElementById("agencia").disabled=false;
+			}else if(value==false){
+				// deshabilitamos
+                document.getElementById("declaracion_de_cambio").disabled=true;
+                document.getElementById("fecha_dex").disabled=true;
+                document.getElementById("vr_declaracion").disabled=true;
+                document.getElementById("fecha_presentacion").disabled=true;
+                document.getElementById("numero_dex").disabled=true;
+                document.getElementById("fecha_aceptacion").disabled=true;
+                document.getElementById("ciudad").disabled=true;
+                document.getElementById("valor").disabled=true;
+                document.getElementById("manifiesto").disabled=true;
+                document.getElementById("numero_factura").disabled=true;
+                document.getElementById("valor_factura").disabled=true;
+                document.getElementById("cliente").disabled=true;
+                document.getElementById("fecha_embarque").disabled=true;
+                document.getElementById("agencia").disabled=true;
+			}
+}
+</script>
 @endsection

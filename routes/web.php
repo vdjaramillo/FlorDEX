@@ -33,10 +33,9 @@ Route::middleware(['auth','role:Tesorero'])->group(function () {
     Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
 });
 //Ruta para contador
-/*
+
 Route::middleware(['auth','role:Contador'])->group(function () {
-    Route::get('dex/listar','authenticated\DEXController@listar')->name('listar-dex');
-    Route::get('dex/ver/{dex}','authenticated\DEXController@ver')->name('ver-dex');
-    Route::post('dex/editar/{dex}','authenticated\DEXController@editar')->name('editar-dex');
+    Route::get('dex/listar2','authenticated\DEXController@listar')->name('listar-dex2');
+    Route::get('dex/ver2/{dex}','authenticated\DEXController@ver')->name('ver-dex2');
+    Route::post('dex/editar2/{dex}','authenticated\DEXController@editar')->name('editar-dex2');
 });
-*/
