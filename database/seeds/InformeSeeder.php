@@ -18,6 +18,7 @@ class InformeSeeder extends Seeder
         $informe->datos_dex()->attach(14);
         $informe->datos_dex()->attach(2);
         $informe->datos_dex()->attach(13);
+        $informe->datos_dex()->attach(15);
         $informe->roles()->attach(3);
 
 
@@ -31,6 +32,7 @@ class InformeSeeder extends Seeder
         $informe->datos_dex()->attach(7);
         $informe->datos_dex()->attach(8);
         $informe->datos_dex()->attach(9);
+        $informe->datos_dex()->attach(16);
         $informe->roles()->attach(3);
         $informe->roles()->attach(4);
 
@@ -43,6 +45,7 @@ class InformeSeeder extends Seeder
         $informe->datos_dex()->attach(14);
         $informe->datos_dex()->attach(2);
         $informe->datos_dex()->attach(13);
+        $informe->datos_dex()->attach(16);
         $informe->roles()->attach(4);
     }
 }

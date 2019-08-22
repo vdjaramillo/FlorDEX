@@ -26,10 +26,7 @@ class DexExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return [
-            '#',
-            'User',
-            'Date',
-        ];
+
+        return $this->informeDex->first()->keys()->all();
     }
 }
