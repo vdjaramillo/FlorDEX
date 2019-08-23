@@ -33,18 +33,21 @@ class InformeController extends Controller
                 'required',
                 function ($attribute, $value, $fail) use ($input) {
 
-                    if ($input->datetime_inicial > $input->datetime_actual) {
-                        $fail('Fecha inicial es mayor a la fecha actual');
+                    if (strtotime($input->datetime_inicial) > strtotime($input->datetime_actual)) {
+                        $fail('Rango de fecha invalido');
+                        //$fail('Fecha inicial es mayor a la fecha actual');
                     }
                 }
             ],
             'fecha_final' => [
                 'required',
                 function ($attribute, $value, $fail) use ($input) {
-                    if ($input->datetime_final > $input->datetime_actual) {
+                    if (strtotime($input->datetime_final) > strtotime($input->datetime_actual)) {
+                        //$fail('Rango de fecha invalido');
                         $fail('Fecha final es mayor a la fecha actual');
                     }else{
-                        if ($input->datetime_final < $input->datetime_inicial) {
+                        if (strtotime($input->datetime_final) < strtotime($input->datetime_inicial)) {
+                            //$fail('Rango de fecha invalido');
                             $fail('Fecha final debe ser mayor o igual a la fecha Inicial');
                         }
                     }
@@ -60,6 +63,10 @@ class InformeController extends Controller
         }
         $dex_encontrados = DEX::whereDate('fecha_dex','>=', $input->fecha_inicial)->whereDate('fecha_dex','<=', $input->fecha_final)->get();
 
+        if(count($dex_encontrados) == 0){
+            $this->setAlert('danger', 'Ningún DEX coincide con la fecha');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $atributos_informe = new Collection();
         $dex_filtrado = new Collection();
         $informe = Tipo_informe::find($input->informe);

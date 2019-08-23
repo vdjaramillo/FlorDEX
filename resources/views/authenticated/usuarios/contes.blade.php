@@ -3,6 +3,7 @@
 <strong>{{auth()->user()->cargo}}: {{auth()->user()->name}}</strong>
 @endsection
 @section('contenido')
+    @includeIf('repository.alerts')
 @if(auth()->user()->cargo==="Tesorero")
 <form action="{{ route('buscar-dex') }}" method="post">
     @else
@@ -75,5 +76,5 @@
         }
 </script>
     @endif
-    
+
 @endsection
