@@ -43,12 +43,12 @@ class InformeController extends Controller
                 'required',
                 function ($attribute, $value, $fail) use ($input) {
                     if (strtotime($input->datetime_final) > strtotime($input->datetime_actual)) {
-                        //$fail('Rango de fecha invalido');
-                        $fail('Fecha final es mayor a la fecha actual');
+                        $fail('Rango de fecha invalido');
+                        //$fail('Fecha final es mayor a la fecha actual');
                     }else{
                         if (strtotime($input->datetime_final) < strtotime($input->datetime_inicial)) {
-                            //$fail('Rango de fecha invalido');
-                            $fail('Fecha final debe ser mayor o igual a la fecha Inicial');
+                          $fail('Rango de fecha invalido');
+                          //  $fail('Fecha final debe ser mayor o igual a la fecha Inicial');
                         }
                     }
 
