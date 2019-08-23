@@ -3,7 +3,7 @@
 <strong>Encargado de Logística: {{auth()->user()->name}}</strong>
 @endsection
 @section('contenido')
-<div class="card col-md-8 row justify-content-center">
+<div class="card row justify-content-center">
     <form action="{{ route('crear-dex') }}" method="POST">
         @csrf
         <div class="form-group">

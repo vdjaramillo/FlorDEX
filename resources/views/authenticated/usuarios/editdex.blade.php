@@ -3,7 +3,7 @@
 <strong>{{auth()->user()->cargo}}: {{auth()->user()->name}}</strong>
 @endsection
 @section('contenido')
-<div class="card col-md-8 row justify-content-center">
+<div class="card row justify-content-center">
     <?php  $anterior = $dex->numero_dex;?>
     @if(auth()->user()->cargo==="Tesorero")
 <form action="{{ route('editar-dex',["dex" => $anterior]) }}" method="post">
