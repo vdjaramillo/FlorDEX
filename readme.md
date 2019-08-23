@@ -17,4 +17,4 @@ DB_DATABASE=
 7. Navegar por el proyecto.
 
 Nota: 
-El proyecto trae por defecto 4 usuarios un administrador (102931) un Encargado de Logística (1) un tesorero (2) y un contador (3) en todos los casos la cédula es la denotada entre paréntesis y la contraseña es 123.
+El proyecto trae por defecto 4 usuarios: un administrador (102931), un Encargado de Logística (1), un tesorero (2), y un contador (3), en todos los casos la cédula es la denotada entre paréntesis y la contraseña es 123.
